@@ -11,14 +11,7 @@ req->items->snippet->title
 
 """
 
-api_key='AIzaSyBGH_h_miBf58_rv5DGd1jaTsET5_dutYo'
-
-# -*- coding: utf-8 -*-
-
-# Sample Python code for youtube.playlists.list
-# See instructions for running these code samples locally:
-# https://developers.google.com/explorer-help/guides/code_samples#python
-
+#api_key='AIzaSyBGH_h_miBf58_rv5DGd1jaTsET5_dutYo'
 import os
 import youtube_dl
 import google_auth_oauthlib.flow
@@ -55,6 +48,7 @@ def api_setup():
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
+    
     return youtube
 
 def get_pl_id(youtube):
@@ -110,14 +104,13 @@ def extract_info(youtube,pl_id):
             else:
                 search_query=info[video_title]['track_name']
             info[video_title]['search_query']=search_query
-            #print(info[video_title]['track_name'])
+
     return info
 
 def main():
     youtube=api_setup()
     pl_id=get_pl_id(youtube)
     info=extract_info(youtube,pl_id)
-#testing the contents of the dictionary
     print("\n The following songs will be added!\n")
     for i in info:
         print(info[i]["track_name"],":",info[i]["artist_name"],"\t the search_query: ",info[i]["search_query"])

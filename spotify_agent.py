@@ -51,26 +51,43 @@ def song_extraction(sp):
     #print(track_uri_list)
     return track_uri_list
 
-def create_playlist(sp,username,track_uri_list):
+def extract_youtube_info(info,sp):
+    query_list=[]
+    for query in info:
+        query_list.append(info[query]["search_query"])
+    #searching for a song
+    track_uri_list=[]
+    for i in query_list:
+        result=sp.search(i,1,0,'track')
+        track_uri_list.append(result['tracks']['items'][0]['uri'])
+        #result['tracks']['items'][0]['artist']['name']
+    #print(track_uri_list)
+    return track_uri_list
+
+
+
+def create_playlist(sp,username,playlist_name,track_uri_list):
     # create a new playlist
-    pl=sp.user_playlist_create(username,'test 3',public=False,description="Songs from YouTube!")
+    pl_obj=sp.user_playlist_create(username,playlist_name,public=False,description="Songs from YouTube!")
     #get details of a playlist --> get playlist object['id'] or #pl=sp.user_playlist(username)
-    playlist_id=pl['id']
+    playlist_id=pl_obj['id']
     #add tracks to a playlist
     sp.user_playlist_add_tracks(username,playlist_id,track_uri_list)
 
-def get_token():
-    username=sys.argv[1]
+def get_token(user_id):
+    #username=sys.argv[1]
     scope = 'playlist-modify-private playlist-modify-public'
-    sp=api_setup_with(scope,username)
+    sp=api_setup_with(scope,user_id)
     #setting up the api service object hence a user warning
     print("Spotify authentication processing...")
-    return sp,username
+    return sp,user_id
 
 def main():
-        sp,username=get_token()
+        user_id="ku6oj81vy1ix4lmr7njd7wz2b"
+        sp,username=get_token(user_id)
         track_uri_list=song_extraction(sp)
-        create_playlist(sp,username,track_uri_list)
+        playlist_name="test 5"
+        create_playlist(sp,username,playlist_name,track_uri_list)
 
 
 
