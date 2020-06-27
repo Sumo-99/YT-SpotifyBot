@@ -24,7 +24,7 @@ import youtube_dl
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
-
+import re
 
 """
 class Playlist(object):
@@ -99,15 +99,18 @@ def extract_info(youtube,pl_id):
         if track_name is not None and artist_name is not None:
             #store detials in info dictioanry
             info[video_title]={
-                "url":video_url,
                 "track_name":track_name,
-                "artist_name":artist_name
-            }
-    """#testing the contents of the dictionary
-        print("\n The following songs will be added!\n")
-        for i in info:
-            print(info[i]["track_name"],":",info[i]["artist_name"])
-    """
+                "artist_name":artist_name,
+                "search_query":None
+            } #remove the word explicit from track_name using re.sub
+            info[video_title]['track_name']=re.sub("\(Explicit\)","",info[video_title]['track_name'])
+            #generate the search_query
+            if "feat" not in info[video_title]['track_name']:
+                search_query=info[video_title]['track_name']+" "+info[video_title]['artist_name']
+            else:
+                search_query=info[video_title]['track_name']
+            info[video_title]['search_query']=search_query
+            #print(info[video_title]['track_name'])
     return info
 
 def main():
@@ -117,7 +120,7 @@ def main():
 #testing the contents of the dictionary
     print("\n The following songs will be added!\n")
     for i in info:
-        print(info[i]["track_name"],":",info[i]["artist_name"])
+        print(info[i]["track_name"],":",info[i]["artist_name"],"\t the search_query: ",info[i]["search_query"])
 
 
 
