@@ -51,7 +51,7 @@ def get_pl_id(youtube):
         for item in response['items']:
             print(i,'.',item['snippet']['title'])
             i+=1
-        playlist_name=input("Type one of the above playlists \t\t")
+        playlist_name=input("Which playlist would you like to transfer?\t")
         #get playlist id
         for item in response['items']:
             temp_id=item['id']
