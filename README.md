@@ -3,15 +3,17 @@ A simple Python script to transfer songs from a YouTube playlist of your choice 
 
 ## SETUP
 You will need
-  *Youtube Data API credentials
-  *Spotify Web API credentials
+<ul>
+  <li>Youtube Data API credentials</li>
+  <li>Spotify Web API credentials</li>
 
 ## YOUTUBE API SETUP
 <ul>
 <li>Follow <a href="https://developers.google.com/youtube/v3/getting-started/">this link</a> step by step to create the API requisites</li>
-<li>next download the 'client_secrets.json' file.
+<li>next download the 'client_secret.json' file.
 It may downlaod with a different name,please rename it as above^</li>
 </ul>
+
 
 ## SPOTIFY WEB API SETUP
 <ul>
@@ -20,6 +22,7 @@ It may downlaod with a different name,please rename it as above^</li>
   <ul>
   <li> First login with your spotify account credentials</li>
   <li> Next click on 'create an app' name it as you wish , accept the terms and hit create</li>
+  <li> Click on 'edit settings', and add <code>http://localhost:8888/</code> under 'Redirect URIs', then click save</li>
   <li> Now you will be able to view client ID and client secret (click show client secret)</li>
   </ul>
 <li>copy the client id , client secret and your user id into the 'spotify_secrets.py' file</li>
