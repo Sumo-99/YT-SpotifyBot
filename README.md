@@ -8,15 +8,15 @@ You will need
 
 ## YOUTUBE API SETUP
 <ul>
-<li>*Follow [this link] step by step to create the API requisites</li>
-<li>*next download the 'client_secrets.json' file.
+<li>Follow <a href="https://developers.google.com/youtube/v3/getting-started/">this link</a> step by step to create the API requisites</li>
+<li>next download the 'client_secrets.json' file.
 It may downlaod with a different name,please rename it as above^</li>
 </ul>
 
 ## SPOTIFY WEB API SETUP
 <ul>
-<li>Get your spotify user id in the [Account Overview] section</li>
-<li>Visit [spotify developer console] and do the following:</li>
+<li>Get your spotify user id in the <a href="https://www.spotify.com/us/account/overview/">Account Overview</a> section</li>
+<li>Visit <a href="https://developer.spotify.com/dashboard/login">spotify developer console </a> and do the following:</li>
   <ul>
   <li> First login with your spotify account credentials</li>
   <li> Next click on 'create an app' name it as you wish , accept the terms and hit create</li>
