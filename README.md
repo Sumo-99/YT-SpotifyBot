@@ -34,7 +34,9 @@ Remember to place it in the same folder as the other files</li>
 To install dependencies run
 <code>pip install -r requirements.txt</code>
 
-
+## RUN
+Run this in your terminal
+<code>python script.py</code>
 
 
 [this link]: <https://developers.google.com/youtube/v3/getting-started/>
