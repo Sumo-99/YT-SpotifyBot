@@ -12,7 +12,8 @@ You will need
 <ul>
 <li>Follow <a href="https://developers.google.com/youtube/v3/getting-started/">this link</a> step by step to create the API requisites</li>
 <li>Next download the 'client_secret.json' file.
-It may downlaod with a different name,please rename it as mentioned here</li>
+It may downlaod with a different name,please rename it as mentioned here
+Remember to place it in the same folder as the other files</li>
 </ul>
 
 
