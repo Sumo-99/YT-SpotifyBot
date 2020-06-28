@@ -4,8 +4,9 @@ A simple Python script to transfer songs from a YouTube playlist of your choice 
 ## SETUP
 You will need
 <ul>
-  <li>Youtube Data API credentials</li>
-  <li>Spotify Web API credentials</li>
+<li>Youtube Data API credentials</li>
+<li>Spotify Web API credentials</li>
+</ul>
 
 ## YOUTUBE API SETUP
 <ul>
