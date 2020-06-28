@@ -14,7 +14,8 @@ import youtube_agent as y
 from youtube_agent import api_setup,get_pl_id,extract_info
 import spotify_agent as s
 from spotify_agent import get_token,extract_youtube_info,create_playlist
-#from credentials import user_id
+import spotify_secrets
+from spotify_secrets import user_id
 #```SET ENVIRONMENT VARRIABLES```
 c1 = "SET SPOTIPY_CLIENT_ID='d6abe18b73e24c508a7b6eed91f42112'"
 c2 = "SET SPOTIPY_CLIENT_SECRET='dde2d8819bda49b48e8ed17e9e08fe89'"
@@ -38,7 +39,6 @@ def main():
     # extract_youtube_info(sp,info) logically here for tranfer of quey list
 
     #spotify_agent work
-    user_id="ku6oj81vy1ix4lmr7njd7wz2b"
     sp=s.get_token(user_id)
     track_uri_list=s.extract_youtube_info(info,sp)
     playlist_name="Youtube Imported Playlist"

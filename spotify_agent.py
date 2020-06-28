@@ -5,14 +5,15 @@ from spotipy.oauth2 import SpotifyClientCredentials #w/o user
 from spotipy.oauth2 import SpotifyOAuth # w user
 import spotipy.util as util
 import re
-
+import spotify_secrets
+from spotify_secrets import client_id,client_secret
 
 #username = ku6oj81vy1ix4lmr7njd7wz2b
 def api_setup_without():
     #WITHOUT USER credentials
     #1. Set the client id and client_secret
-        client_id = 'd6abe18b73e24c508a7b6eed91f42112'
-        client_secret = '2fd662c1491b4beea8fca1ced491995d'
+        client_id = 'e85479067b3e4a9ba3c579c1bc923f74'
+        client_secret = '90b032ad8d7e4417900369e0a69f0b71'
         ccm = SpotifyClientCredentials(client_id, client_secret)
     #2. Create a spotipy object using the above credentials
         sp = spotipy.Spotify(client_credentials_manager=ccm)
@@ -23,8 +24,8 @@ def api_setup_with(scope,username):
 
     token = util.prompt_for_user_token(username,
                                        scope,
-                                       client_id='d6abe18b73e24c508a7b6eed91f42112',
-                                       client_secret='dde2d8819bda49b48e8ed17e9e08fe89',
+                                       client_id=client_id,
+                                       client_secret=client_secret,
                                        redirect_uri='http://localhost:8888/')
 
     #creating the object
@@ -83,12 +84,12 @@ def get_token(user_id):
     return sp
 
 def main():
-        user_id="ku6oj81vy1ix4lmr7njd7wz2b"
-        sp=get_token(user_id)
-        track_uri_list=song_extraction(sp)
-        playlist_name="test 5"
-        create_playlist(sp,username,playlist_name,track_uri_list)
-
+    user_id="ku6oj81vy1ix4lmr7njd7wz2b"
+    sp=get_token(user_id)
+    #track_uri_list=song_extraction(sp)
+    track_uri_list=song_extraction(sp)
+    playlist_name="test 5"
+    create_playlist(sp,user_id,playlist_name,track_uri_list)
 
 
 
