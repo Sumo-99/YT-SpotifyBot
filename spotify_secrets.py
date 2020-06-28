@@ -1,3 +1,3 @@
-client_id=""
-client_secret=""
-user_id=""
+client_id="e85479067b3e4a9ba3c579c1bc923f74"
+client_secret="90b032ad8d7e4417900369e0a69f0b71"
+user_id="ku6oj81vy1ix4lmr7njd7wz2b"

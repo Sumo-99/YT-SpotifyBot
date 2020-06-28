@@ -11,7 +11,7 @@ req->items->snippet->title
 
 """
 
-#api_key='AIzaSyBGH_h_miBf58_rv5DGd1jaTsET5_dutYo'
+
 import os
 import youtube_dl
 import google_auth_oauthlib.flow
@@ -19,21 +19,7 @@ import googleapiclient.discovery
 import googleapiclient.errors
 import re
 
-"""
-class Playlist(object):
-    def __init__(self, id, title):
-        self.id = id
-        self.title = title
-#    playlists = [Playlist(item['id'], item['snippet']['title']) for item in response['items']]
 
-    above list comprehension does this
-    for item in response['items']:
-        extract item['id']
-        extract item['snippet']['title']
-    it creates a list of playlist objects(having id and title)
-
-
-"""
 def api_setup():
     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.

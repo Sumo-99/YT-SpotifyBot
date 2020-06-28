@@ -8,17 +8,7 @@ import re
 import spotify_secrets
 from spotify_secrets import client_id,client_secret
 
-#username = ku6oj81vy1ix4lmr7njd7wz2b
-def api_setup_without():
-    #WITHOUT USER credentials
-    #1. Set the client id and client_secret
-        client_id = 'e85479067b3e4a9ba3c579c1bc923f74'
-        client_secret = '90b032ad8d7e4417900369e0a69f0b71'
-        ccm = SpotifyClientCredentials(client_id, client_secret)
-    #2. Create a spotipy object using the above credentials
-        sp = spotipy.Spotify(client_credentials_manager=ccm)
-    #3. Return the object to be used for calls
-        return sp
+
 
 def api_setup_with(scope,username):
 
