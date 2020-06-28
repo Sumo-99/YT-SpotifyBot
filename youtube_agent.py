@@ -48,7 +48,7 @@ def api_setup():
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
-    
+    print("Done!")
     return youtube
 
 def get_pl_id(youtube):
@@ -104,6 +104,12 @@ def extract_info(youtube,pl_id):
             else:
                 search_query=info[video_title]['track_name']
             info[video_title]['search_query']=search_query
+        else:
+            print("\n Could not add ",video_title,"  Please use an official video\n")
+    #testing conents
+    print("\n The following songs will be added!\n")
+    for i in info:
+        print(info[i]["track_name"],":",info[i]["artist_name"])
 
     return info
 
@@ -111,10 +117,6 @@ def main():
     youtube=api_setup()
     pl_id=get_pl_id(youtube)
     info=extract_info(youtube,pl_id)
-    print("\n The following songs will be added!\n")
-    for i in info:
-        print(info[i]["track_name"],":",info[i]["artist_name"],"\t the search_query: ",info[i]["search_query"])
-
 
 
 

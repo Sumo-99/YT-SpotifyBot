@@ -10,9 +10,9 @@ import sys
 from spotipy.oauth2 import SpotifyClientCredentials #w/o user
 from spotipy.oauth2 import SpotifyOAuth # w user
 import spotipy.util as util
-import youtube_agent
+import youtube_agent as y
 from youtube_agent import api_setup,get_pl_id,extract_info
-import spotify_agent
+import spotify_agent as s
 from spotify_agent import get_token,extract_youtube_info,create_playlist
 #from credentials import user_id
 #```SET ENVIRONMENT VARRIABLES```
@@ -27,23 +27,25 @@ os.system(c3)
 def main():
 
     #youtube_agent work
+    print('hi')
     youtube=api_setup()
-    """
-    pl_id=get_pl_id(youtube)
-    info=extract_info(youtube,pl_id)
+    pl_id=y.get_pl_id(youtube)
+    info=y.extract_info(youtube,pl_id)
 
     #transfer the queries
     #sp,username=get_token(user_id) logically here , but done before to invoke extract_youtube_info
-    # sp,username=get_token(user_id)
+    # sp=get_token(user_id)
     # extract_youtube_info(sp,info) logically here for tranfer of quey list
 
     #spotify_agent work
     user_id="ku6oj81vy1ix4lmr7njd7wz2b"
-    sp,username=get_token(user_id)
-    track_uri_list=extract_youtube_info(info,sp)
+    sp=s.get_token(user_id)
+    track_uri_list=s.extract_youtube_info(info,sp)
     playlist_name="Youtube Imported Playlist"
-    create_playlist(sp,username,playlist_name,track_uri_list)
+    s.create_playlist(sp,user_id,playlist_name,track_uri_list)
 
     print()
-    print("Play list created check your spotify library!!")
-"""
+    print("Youtube Imported Playlist created , check your spotify library!!")
+
+if __name__ == "__main__":
+    main()

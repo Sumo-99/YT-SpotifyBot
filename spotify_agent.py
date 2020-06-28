@@ -80,11 +80,11 @@ def get_token(user_id):
     sp=api_setup_with(scope,user_id)
     #setting up the api service object hence a user warning
     print("Spotify authentication processing...")
-    return sp,user_id
+    return sp
 
 def main():
         user_id="ku6oj81vy1ix4lmr7njd7wz2b"
-        sp,username=get_token(user_id)
+        sp=get_token(user_id)
         track_uri_list=song_extraction(sp)
         playlist_name="test 5"
         create_playlist(sp,username,playlist_name,track_uri_list)
