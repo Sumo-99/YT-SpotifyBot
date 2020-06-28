@@ -10,22 +10,24 @@ You will need
 <ul>
 <li>*Follow [this link] step by step to create the API requisites</li>
 <li>*next download the 'client_secrets.json' file.
-It may downlaod with a different name,please rename it as above^</ul>
+It may downlaod with a different name,please rename it as above^</li>
 </ul>
+
 ## SPOTIFY WEB API SETUP
 <ul>
-*Get your spotify user id in the [Account Overview] section
-*Visit [spotify developer console] and do the following:
-  <ol>
+<li>Get your spotify user id in the [Account Overview] section</li>
+<li>Visit [spotify developer console] and do the following:</li>
+  <ul>
   <li> First login with your spotify account credentials</li>
   <li> Next click on 'create an app' name it as you wish , accept the terms and hit create</li>
   <li> Now you will be able to view client ID and client secret (click show client secret)</li>
-  </ol>
+  </ul>
 <li>copy the client id , client secret and your user id into the 'spotify_secrets.py' file</li>
 </ul>
+
 ## INSTALL
 To install dependencies run
-'pip install -r requirements.txt'
+<code>pip install -r requirements.txt</code>
 
 
 
