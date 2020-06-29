@@ -72,18 +72,3 @@ def get_token(user_id):
     #setting up the api service object hence a user warning
     print("Spotify authentication processing...")
     return sp
-
-def main():
-    user_id="ku6oj81vy1ix4lmr7njd7wz2b"
-    sp=get_token(user_id)
-    #track_uri_list=song_extraction(sp)
-    track_uri_list=song_extraction(sp)
-    playlist_name="test 5"
-    create_playlist(sp,user_id,playlist_name,track_uri_list)
-
-
-
-
-
-if __name__=="__main__":
-    main()

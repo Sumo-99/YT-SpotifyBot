@@ -82,8 +82,9 @@ def extract_info(youtube,pl_id):
                 "track_name":track_name,
                 "artist_name":artist_name,
                 "search_query":None
-            } #remove the word explicit from track_name using re.sub
-            info[video_title]['track_name']=re.sub("\(Explicit\)","",info[video_title]['track_name'])
+            } #remove the word explicit from track_name using re.sub or using string.split("(")[0]
+            #info[video_title]['track_name']=re.sub("\(Explicit\)","",info[video_title]['track_name'])
+            info[video_title]['track_name']=info[video_title]['track_name'].split("(")[0]
             #generate the search_query
             if "feat" not in info[video_title]['track_name']:
                 search_query=info[video_title]['track_name']+" "+info[video_title]['artist_name']
@@ -95,18 +96,7 @@ def extract_info(youtube,pl_id):
     #testing conents
     print("\n The following songs will be added!\n")
     for i in info:
-        print(info[i]["track_name"],":",info[i]["artist_name"])
+        #print(info[i]["track_name"],":",info[i]["artist_name"])
+        print("video title ",i,"query: ",info[i]['search_query'])
 
     return info
-
-def main():
-    youtube=api_setup()
-    pl_id=get_pl_id(youtube)
-    info=extract_info(youtube,pl_id)
-
-
-
-
-
-if __name__ == "__main__":
-    main()
