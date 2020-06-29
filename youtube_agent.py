@@ -52,12 +52,18 @@ def get_pl_id(youtube):
             print(i,'.',item['snippet']['title'])
             i+=1
         playlist_name=input("Which playlist would you like to transfer?\t")
-        #get playlist id
-        for item in response['items']:
-            temp_id=item['id']
-            if item['snippet']['title']==playlist_name:
-                pl_id=temp_id
-        return pl_id
+        while True:
+            #get playlist id
+            for item in response['items']:
+                temp_id=item['id']
+                if item['snippet']['title']==playlist_name:
+                    print("Got it!")
+                    pl_id=temp_id
+                    return pl_id
+            print("Enter a valid playlist name")
+            playlist_name=input("Which playlist would you like to transfer?\t")
+
+
 
 def extract_info(youtube,pl_id):
 
@@ -72,27 +78,37 @@ def extract_info(youtube,pl_id):
     #get url and video title
     for item in response['items']:
         video_title = item["snippet"]["title"]
-        video_url = "https://www.youtube.com/watch?v={}".format(item["snippet"]["resourceId"]["videoId"])
-        details = youtube_dl.YoutubeDL({}).extract_info(video_url, download=False)
-        track_name = details["track"]
-        artist_name = details["artist"]
-        if track_name is not None and artist_name is not None:
-            #store detials in info dictioanry
+        if video_title.find('-')>0: # contains '-' ? dont use dl
+            artist_name=video_title.split("-")[0]
+            track_name=video_title.split("-")[1]
+            track_name=track_name.split("(")[0]
             info[video_title]={
                 "track_name":track_name,
                 "artist_name":artist_name,
-                "search_query":None
-            } #remove the word explicit from track_name using re.sub or using string.split("(")[0]
-            #info[video_title]['track_name']=re.sub("\(Explicit\)","",info[video_title]['track_name'])
-            info[video_title]['track_name']=info[video_title]['track_name'].split("(")[0]
-            #generate the search_query
-            if "feat" not in info[video_title]['track_name']:
-                search_query=info[video_title]['track_name']+" "+info[video_title]['artist_name']
+                "search_query":track_name+" "+artist_name
+            }
+        else:                      # doesnt contain '-' ? use dl
+            video_url = "https://www.youtube.com/watch?v={}".format(item["snippet"]["resourceId"]["videoId"])
+            details = youtube_dl.YoutubeDL({}).extract_info(video_url, download=False)
+            track_name = details["track"]
+            artist_name = details["artist"]
+            if track_name is not None and artist_name is not None:
+                #store detials in info dictioanry
+                info[video_title]={
+                    "track_name":track_name,
+                    "artist_name":artist_name,
+                    "search_query":None
+                } #remove the word explicit from track_name using re.sub or using string.split("(")[0]
+                #info[video_title]['track_name']=re.sub("\(Explicit\)","",info[video_title]['track_name'])
+                #info[video_title]['track_name']=info[video_title]['track_name'].split("(")[0]
+                #generate the search_query
+                if "feat" not in info[video_title]['track_name']:
+                    search_query=info[video_title]['track_name']+" "+info[video_title]['artist_name']
+                else:
+                    search_query=info[video_title]['track_name']
+                info[video_title]['search_query']=search_query
             else:
-                search_query=info[video_title]['track_name']
-            info[video_title]['search_query']=search_query
-        else:
-            print("\n Could not add ",video_title,"  Please use an official video\n")
+                print("\n Could not add ",video_title,"  Please use an official video\n")
     #testing conents
     print("\n The following songs will be added!\n")
     for i in info:
