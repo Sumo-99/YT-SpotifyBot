@@ -38,6 +38,8 @@ To install dependencies run
 Run this in your terminal
 <code>python script.py</code>
 
+Hits:
+[![HitCount](http://hits.dwyl.com/Sumo-99/YT-SpotifyBot.svg)](http://hits.dwyl.com/Sumo-99/YT-SpotifyBot)
 
 [this link]: <https://developers.google.com/youtube/v3/getting-started/>
 [Account Overview]: <https://www.spotify.com/us/account/overview/>
