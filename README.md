@@ -41,6 +41,8 @@ Run this in your terminal
 Hits:
 [![HitCount](http://hits.dwyl.com/Sumo-99/YT-SpotifyBot.svg)](http://hits.dwyl.com/Sumo-99/YT-SpotifyBot)
 
+<hr>
+
 [this link]: <https://developers.google.com/youtube/v3/getting-started/>
 [Account Overview]: <https://www.spotify.com/us/account/overview/>
 [spotify developer console]: <https://developer.spotify.com/dashboard/login>
